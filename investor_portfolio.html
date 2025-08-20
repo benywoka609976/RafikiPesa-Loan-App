@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RafikiPesa - Investor Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>RafikiPesa - Investor Portfolio</h1>
+    </header>
+    <main>
+        <h2>Your Investments</h2>
+        {% for loan in loans %}
+            <p>Loan ID: {{ loan[0] }}</p>
+            <p>Amount: KES {{ loan[1] }}</p>
+            <p>Interest Rate: {{ loan[2] }}%</p>
+            <p>Status: {{ loan[3] }}</p>
+        {% endfor %}
+    </main>
+</body>
+</html>
