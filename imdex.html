@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RafikiPesa - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>RafikiPesa</h1>
+        <nav>
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('customer_care') }}">Customer Care</a>
+            <a href="{{ url_for('cybersecurity') }}">Cybersecurity</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Welcome to RafikiPesa</h2>
+        <p>Connect with SACCOs, borrow, and invest with ease.</p>
+        <a href="{{ url_for('register') }}" class="btn">Get Started</a>
+    </main>
+</body>
+</html>
