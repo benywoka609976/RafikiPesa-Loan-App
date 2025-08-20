@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RafikiPesa - Apply for Loan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>RafikiPesa - Apply for Loan</h1>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <label>Select SACCO Membership:
+                <select name="member_id" required>
+                    {% for membership in memberships %}
+                        <option value="{{ membership[0] }}">SACCO ID: {{ membership[1] }}</option>
+                    {% endfor %}
+                </select>
+            </label><br>
+            <label>Loan Amount: <input type="number" name="amount" required></label><br>
+            <button type="submit">Apply</button>
+        </form>
+    </main>
+</body>
+</html>
