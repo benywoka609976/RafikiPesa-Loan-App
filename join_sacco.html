@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RafikiPesa - Join SACCO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>RafikiPesa - Join SACCO</h1>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <label>Select SACCO:
+                <select name="sacco_id" required>
+                    {% for sacco in saccos %}
+                        <option value="{{ sacco[0] }}">{{ sacco[1] }} (Interest Rate: {{ sacco[2] }}%)</option>
+                    {% endfor %}
+                </select>
+            </label><br>
+            <label>Payment Method:
+                <select name="payment_method" required>
+                    <option value="mpesa">MPESA</option>
+                    <option value="airtel">Airtel Money</option>
+                </select>
+            </label><br>
+            <button type="submit">Pay KES 500 and Join</button>
+        </form>
+    </main>
+</body>
+</html>
