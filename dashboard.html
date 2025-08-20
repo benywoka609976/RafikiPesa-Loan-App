@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RafikiPesa - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>RafikiPesa - Dashboard</h1>
+        <nav>
+            <a href="{{ url_for('apply_loan', user_id=user_id) }}">Apply for Loan</a>
+            <a href="{{ url_for('investor_portfolio', user_id=user_id) }}">Investor Portfolio</a>
+            <a href="{{ url_for('customer_care') }}">Customer Care</a>
+            <a href="{{ url_for('cybersecurity') }}">Cybersecurity</a>
+        </nav>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <h2>Your SACCOs</h2>
+        {% for member in member_info %}
+            <p>SACCO: {{ member[0] }}</p>
+            <p>Shares: KES {{ member[1] }}</p>
+            <p>Interest Rate: {{ member[3] }}%</p>
+            <p>Max Loan: KES {{ member[1] * 3 | min(750000) }}</p>
+        {% endfor %}
+    </main>
+</body>
+</html>
